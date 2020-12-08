@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 #ifdef RM
     qputenv("QMLSCENE_DEVICE", "epaper");
     qputenv("QT_QPA_PLATFORM", "epaper:enable_fonts");
-    qputenv("QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS", "rotate=180");
+    qputenv("QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS", "rotate=180:invertx");
     qputenv("QT_QPA_GENERIC_PLUGINS", "evdevtablet");
 #endif
 

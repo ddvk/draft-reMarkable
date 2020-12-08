@@ -89,21 +89,19 @@ Window {
             anchors.bottom: parent.bottom
             anchors.margins: 15
 
-            ListView {
+            GridView {
                 id:optionsArea
-                spacing: 15
                 anchors.fill:parent
+                cellHeight: 140
+                cellWidth: 300
                 interactive: false
                 model: controller.getOptions();
                 delegate: Rectangle{
                     id:menu_item
-                    height:150
+                    height:optionsArea.cellHeight-10
+                    width:optionsArea.cellWidth-10
                     border.color: "black"
                     border.width: 2
-
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.margins: 10
                     states: [
                     State {
                            name:"normal"
@@ -121,7 +119,8 @@ Window {
                         }]
 
                     Text{
-                        font.pixelSize: 70
+                        id:header
+                        font.pixelSize: 40
                         anchors.left: parent.left
                         anchors.top: parent.top
                         anchors.margins: 10
@@ -130,15 +129,16 @@ Window {
 
                     Text {
                         id:tdesc
+                        anchors.top: header.bottom
                         anchors.bottom:parent.bottom
                         anchors.left:parent.left
                         anchors.right:parent.right
-                        anchors.leftMargin:20
-                        anchors.bottomMargin:10
+                        anchors.margins: 10
                         text:model.modelData.desc
                         font.family:"Noto Serif"
-                        font.pixelSize:30
+                        font.pixelSize:20
                         font.italic: true
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     }
                     MouseArea {
                         anchors.fill: parent
